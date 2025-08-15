@@ -64,23 +64,15 @@ Bu proje, güvenlik personeli ve ilgili çalışanlar için tasarlanmış görse
 
 ---
 
-## 🖼️ Ekran Görüntüleri
 
-### Giriş Sayfası
-Modern ve kullanıcı dostu giriş arayüzü ile sınav bilgileri
+## 📸 Ekran Görüntüleri
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/9017b6c1-71e3-4a94-8011-b1eefce73640" alt="Ekran 1" width="300"/>
+   <img src="https://github.com/user-attachments/assets/de6f69ce-8f65-47e4-abc7-b1faf7329ad1" alt="Ekran 2" width="300"/>
+   <img src="https://github.com/user-attachments/assets/3a1aadbe-ff41-493a-8c08-7ba0b0f52edd" alt="Ekran 3" width="300"/>
+   <img src="https://github.com/user-attachments/assets/8f9410db-fc28-4950-b0dd-205b954e4179" alt="Ekran 4" width="300"/>
+</div>
 
-### Sınav Sayfası
-- Gerçek zamanlı zamanlayıcı
-- Görsel soru gösterimi
-- Çoktan seçmeli cevap seçenekleri
-- İlerleme göstergesi
-
-### Sonuç Sayfası
-- Detaylı performans raporu
-- Her soru için görsel ve cevap karşılaştırması
-- Toplam puan ve istatistikler
-
----
 
 ## 🔧 Teknolojiler
 
