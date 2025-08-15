@@ -10,7 +10,7 @@
 
 **Görsel tabanlı güvenlik sınavı uygulaması**
 
-[🚀 Kurulum](#-kurulum) • [📋 Özellikler](#-özellikler) • [🖼️ Ekran Görüntüleri](#️-ekran-görüntüleri) • [🔧 Teknolojiler](#-teknolojiler)
+[🚀 Kurulum](#-kurulum) • [📋 Özellikler](#-özellikler) • [📸 Ekran Görüntüleri](#️-ekran-görüntüleri) • [🔧 Teknolojiler](#-teknolojiler)
 
 </div>
 
