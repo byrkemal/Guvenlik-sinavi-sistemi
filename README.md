@@ -224,9 +224,9 @@ CSRF_COOKIE_SECURE = True
 
 ## 📞 İletişim
 
-- **Geliştirici**: [Adınız]
-- **E-posta**: [email@example.com]
-- **GitHub**: [github.com/kullaniciadi]
+- **Geliştirici**: Kemal Bayır
+- **E-posta**: bayirkemal61@gmail.com
+- **GitHub**: https://github.com/byrkemal
 
 ---
 
