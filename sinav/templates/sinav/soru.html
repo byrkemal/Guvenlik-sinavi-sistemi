@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sınav Sorusu</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .timer {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .options {
+            margin: 25px 0;
+        }
+        
+        .option {
+            display: block;
+            padding: 12px 15px;
+            margin: 8px 0;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            background-color: #e9ecef;
+        }
+        
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .progress {
+            text-align: center;
+            margin: 15px 0;
+            color: #666;
+            font-size: 16px;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #eee;
+            margin: 30px 0;
+        }
+        
+        .correct-answer {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="timer" id="timer">
+            Kalan Süre: <span id="minutes">{{ kalan_dakika }}</span>:<span id="seconds">{{ kalan_saniye }}</span>
+        </div>
+
+        <div class="progress">
+            Soru {{ soru_numarasi }} / {{ toplam_soru }}
+        </div>
+        
+        <h2>Yandaki bagaj içerisindeki tehdidin cinsi nedir?</h2>
+        
+        <div class="image-container">
+            <img src="{{ gorsel_url }}" alt="Bagaj görseli" width="400">
+        </div>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="options">
+                {% for sik in siklar %}
+                    <label class="option">
+                        <input type="radio" name="secim" value="{{ sik|slice:"3:" }}"> {{ sik }}
+                    </label>
+                {% endfor %}
+            </div>
+            
+            <button type="submit">Sonraki Soru</button>
+        </form>
+        
+        <hr>
+    </div>
+
+    <script>
+        function updateTimer() {
+            let minutes = parseInt(document.getElementById('minutes').textContent);
+            let seconds = parseInt(document.getElementById('seconds').textContent);
+            
+            if (seconds === 0) {
+                if (minutes === 0) {
+                    window.location.href = "{% url 'sinav_sonuc' %}";
+                    return;
+                }
+                minutes--;
+                seconds = 59;
+            } else {
+                seconds--;
+            }
+            
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>

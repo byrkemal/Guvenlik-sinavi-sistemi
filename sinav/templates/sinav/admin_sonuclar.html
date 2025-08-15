@@ -1,0 +1,23 @@
+<h2>🧾 Sınav Sonuçları</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Kullanıcı Adı</th>
+            <th>Doğru</th>
+            <th>Yanlış</th>
+            <th>Puan</th>
+            <th>Tarih</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in sonuclar %}
+        <tr>
+            <td>{{ s.kullanici.kullanici_adi }}</td>
+            <td>{{ s.dogru_sayisi }}</td>
+            <td>{{ s.yanlis_sayisi }}</td>
+            <td>{{ s.puan }}</td>
+            <td>{{ s.tarih|date:"d.m.Y H:i" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

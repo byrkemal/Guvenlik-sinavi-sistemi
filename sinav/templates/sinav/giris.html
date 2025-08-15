@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sınav Giriş Paneli</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .login-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        
+        .info-box {
+            color: #2c3e50;
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 15px;
+            border-left: 4px solid #3498db;
+            text-align: left;
+        }
+        
+        .info-box strong {
+            color: #3498db;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            background-color: #fadbd8;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .form-group {
+            margin-bottom: 22px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+        }
+        
+        .footer-text {
+            margin-top: 25px;
+            color: #7f8c8d;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .exam-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+        }
+        
+        .exam-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .exam-item strong {
+            display: block;
+            color: #3498db;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Sınav Giriş Paneli</h2>
+        
+        <!-- Bilgilendirme Kutusu -->
+        <div class="info-box">
+            <p><strong>Önemli Bilgilendirme</strong></p>
+            <p>Sınavı başlatmak için kullanıcı bilgilerinizi giriniz.</p>
+            
+            <div class="exam-details">
+                <div class="exam-item">
+                    <span>Soru Sayısı</span>
+                    <strong>20</strong>
+                </div>
+                <div class="exam-item">
+                    <span>Sınav Süresi</span>
+                    <strong>{{ sinav_suresi }} Dakika</strong>
+                </div>
+            </div>
+        </div>
+
+        {% if mesaj %}
+            <div class="error-message">{{ mesaj }}</div>
+        {% endif %}
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="kullanici_adi">Kullanıcı Adı</label>
+                <input type="text" id="kullanici_adi" name="kullanici_adi" placeholder="Öğrenci numaranızı girin" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="sifre">Şifre</label>
+                <input type="password" id="sifre" name="sifre" placeholder="Şifrenizi girin" required>
+            </div>
+            
+            <button type="submit">SINAVA BAŞLA</button>
+        </form>
+        
+        <div class="footer-text">
+            Sorun yaşıyorsanız lütfen sistem yöneticinizle iletişime geçin.
+        </div>
+    </div>
+</body>
+</html>

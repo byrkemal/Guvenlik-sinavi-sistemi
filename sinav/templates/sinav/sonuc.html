@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sınav Sonucu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f3;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .summary {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .dogru {
+            color: green;
+            font-weight: bold;
+        }
+        .yanlis {
+            color: red;
+            font-weight: bold;
+        }
+        img {
+            max-width: 100px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sınav Sonucu</h2>
+        <div class="summary">
+            <p>✅ Doğru Sayısı: <strong>{{ dogru }}</strong></p>
+            <p>❌ Yanlış Sayısı: <strong>{{ yanlis }}</strong></p>
+            <p>⭕ Boş Bırakılan: <strong>{{ bos }}</strong></p>
+            <p>🎯 Puanınız: <strong>{{ puan }}</strong></p>
+        </div>
+
+        <h3>Detaylı Cevaplar</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Görsel</th>
+                    <th>Seçilen Cevap</th>
+                    <th>Doğru Cevap</th>
+                    <th>Durum</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in detaylar %}
+                    <tr>
+                        <td><img src="{{ d.gorsel_url }}" alt="Soru Görseli"></td>
+                        <td>{{ d.secilen }}</td>
+                        <td>{{ d.dogru }}</td>
+                        <td class="{% if d.dogru_mu %}dogru{% else %}yanlis{% endif %}">
+                            {% if d.dogru_mu %}Doğru{% else %}Yanlış{% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
