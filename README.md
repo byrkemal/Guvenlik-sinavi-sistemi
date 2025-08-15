@@ -223,6 +223,11 @@ Django admin panelinden:
 
 ---
 
+## 🙏 Teşekkürler
+
+Bu projeyi geliştirirken kullanılan tüm açık kaynak kütüphanelere ve topluluğa teşekkürler.
+
+---
 <div align="center">
 
 **⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!**
